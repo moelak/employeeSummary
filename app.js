@@ -101,7 +101,7 @@ function loop() {
       employee.push(
         new Manager(data.name, data.id, data.email, data.officeNumber)
       );
-      function q() {
+      function question() {
         inquirer.prompt(questions).then(res => {
           const type = Object.values(res)[0];
           console.log(type);
@@ -112,18 +112,18 @@ function loop() {
       function employeType(type) {
         if ('nomore' !== type) {
           if ('intern' === type) {
-            inquirer.prompt(intern).then(data2 => {
+            inquirer.prompt(intern).then(data => {
               employee.push(
-                new Intern(data2.name, data2.id, data2.email, data2.school)
+                new Intern(data.name, data.id, data.email, data.school)
               );
-              q();
+              question();
             });
           } else if ('engineer' === type) {
-            inquirer.prompt(engineer).then(data2 => {
+            inquirer.prompt(engineer).then(data => {
               employee.push(
-                new Engineer(data2.name, data2.id, data2.email, data2.github)
+                new Engineer(data.name, data.id, data.email, data.github)
               );
-              q();
+              question();
             });
           }
         } else {
@@ -135,7 +135,7 @@ function loop() {
           return;
         }
       }
-      q();
+      question();
     })
     .catch(error => {
       if (error.isTtyError) {
