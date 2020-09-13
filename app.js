@@ -97,14 +97,14 @@ function loop() {
   inquirer
     .prompt(manager)
     .then(data => {
-      console.log(data);
+      // console.log(data);
       employee.push(
         new Manager(data.name, data.id, data.email, data.officeNumber)
       );
       function question() {
         inquirer.prompt(questions).then(res => {
           const type = Object.values(res)[0];
-          console.log(type);
+          // console.log(type);
           employeType(type);
         });
       }
@@ -127,8 +127,8 @@ function loop() {
             });
           }
         } else {
-          console.log('Exitttt');
-          console.log(employee);
+          // console.log('Exitttt');
+          // console.log(employee);
           fs.writeFile(outputPath, render(employee), function (err) {
             if (err) throw err;
           });
